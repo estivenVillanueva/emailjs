@@ -1,29 +1,24 @@
 import React, {useRef} from 'react';
 import emailjs from '@emailjs/browser';
+import './ContactUs.css';
 
 export const ContactUs = () => {
    const refForm = useRef();
 
    const handleSubmit = (e) => {
-
     e.preventDefault();
-
    
     const serviceId = "service_bby8nvc";
     const templateId = "template_r2bgnbq";
-
     const publicKey = "8DvWGB2ZA7o8-uIH3";
 
     emailjs.sendForm(serviceId, templateId, refForm.current, publicKey)
     .then(result => console.log(result.text))
     .catch(error => console.log(error.text))
-
-  
 }
 
 return (
-    
-    <form ref={refForm} action=""onSubmit={handleSubmit}>
+    <form ref={refForm} className="contact-form" onSubmit={handleSubmit}>
         <div className='header-contact'>
             <h1>Contact Us</h1>
             <p>Please fill out the form below to contact us</p>
